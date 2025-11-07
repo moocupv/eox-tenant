@@ -33,33 +33,7 @@ class TenantOrganization(models.Model):
 
     def __str__(self):
         return f"<Org: {self.name}>"
-
-    def get_lms_configs_i18n(self):
-        """
-        Obtiene las configuraciones de LMS según el idioma actual.
-        
-        Returns:
-            dict: Configuraciones de LMS para el idioma actual
-        """
-        current_language = get_current_language()
-        if not current_language or not isinstance(self.lms_configs, dict):
-            return self.lms_configs
-        
-        return self.lms_configs.get(current_language, self.lms_configs)
-
-    def get_studio_configs_i18n(self):
-        """
-        Obtiene las configuraciones de Studio según el idioma actual.
-        
-        Returns:
-            dict: Configuraciones de Studio para el idioma actual
-        """
-        current_language = get_current_language()
-        if not current_language or not isinstance(self.studio_configs, dict):
-            return self.studio_configs
-        
-        return self.studio_configs.get(current_language, self.studio_configs)
-        
+          
 class Microsite(models.Model):
     """
     This is where the information about the microsite gets stored to the db.
@@ -206,7 +180,33 @@ class TenantConfig(models.Model):
 
     def __unicode__(self):
         return self.external_key
+    
+    def get_lms_configs_i18n(self):
+        """
+        Obtiene las configuraciones de LMS según el idioma actual.
+        
+        Returns:
+            dict: Configuraciones de LMS para el idioma actual
+        """
+        current_language = get_current_language()
+        if not current_language or not isinstance(self.lms_configs, dict):
+            return self.lms_configs
+        
+        return self.lms_configs.get(current_language, self.lms_configs)
 
+    def get_studio_configs_i18n(self):
+        """
+        Obtiene las configuraciones de Studio según el idioma actual.
+        
+        Returns:
+            dict: Configuraciones de Studio para el idioma actual
+        """
+        current_language = get_current_language()
+        if not current_language or not isinstance(self.studio_configs, dict):
+            return self.studio_configs
+        
+        return self.studio_configs.get(current_language, self.studio_configs)
+    
     def get_organizations(self):
         """
         Helper method to get organizations.
