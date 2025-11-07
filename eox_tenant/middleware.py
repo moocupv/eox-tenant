@@ -4,7 +4,7 @@
 Middleware para detección de idioma en eox-tenant.
 """
 from django.utils.translation import get_language
-from eox_tenant.models import set_current_language
+from eox_tenant.thread_locals import set_current_language
 
 
 class TenantLanguageMiddleware:
