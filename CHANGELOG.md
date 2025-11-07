@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Added
+- **i18n Support**: Multi-language configurations for tenant settings 
+- **TenantLanguageMiddleware**: Automatic language detection
+- **Language Fallback**: Smart fallback (es-mx → es → en)
+- New model methods: `get_lms_configs_for_language()`, `get_studio_configs_for_language()`, 
+`get_theming_configs_for_language()`, `get_available_languages()`, `get_value_i18n()`
+- New properties: `lms_configs_i18n`, `studio_configs_i18n`, `theming_configs_i18n`
+- Thread-local language storage
+
+### Changed
+- Admin methods now use i18n values
+
+### Backward Compatibility
+
+- 100% backward compatible
+- No migration required
+
 ## [v11.7.0](https://github.com/eduNEXT/eox-tenant/compare/v11.6.0...v11.7.0) - (2024-06-19)
 
 ### Added
