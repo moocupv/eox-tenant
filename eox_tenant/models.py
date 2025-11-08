@@ -12,7 +12,8 @@ from django.utils.translation import gettext_lazy as _
 from jsonfield.fields import JSONField
 
 from eox_tenant.constants import CMS_CONFIG_COLUMN, LMS_CONFIG_COLUMN
-
+from organizations.models import Organization
+from eox_tenant.thread_locals import get_current_language
 
 class TenantOrganization(models.Model):
     """
